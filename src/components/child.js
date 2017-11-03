@@ -8,7 +8,7 @@ class Child extends Component {
         // calling the constructor of the parent Component class
         super(props);
 
-        this.state = { inputvalue : ''};
+        this.state = { inputValue: ''};
     }
 
     render() {
@@ -18,7 +18,9 @@ class Child extends Component {
                 <input onChange={this.onInputChange} />
                 <br />
                 {/* another way to do the same */}
-                <input onChange={event => this.setState({ inputValue: event.target.value})} />
+                <input 
+                    value={this.state.inputValue}
+                    onChange={event => this.setState({ inputValue: event.target.value})} />
                 {/* never use this.state=blah to assign state*/}
                 <br />
                 Value entered : {this.state.inputValue}
