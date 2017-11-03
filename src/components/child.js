@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
 class Child extends Component {
+    // first and only function called when a new instance
+    // of the class is created is the constructor
+    constructor(props) {
+
+        // calling the constructor of the parent Component class
+        super(props);
+
+        this.state = { inputvalue : ''};
+    }
+
     render() {
         return (
             <div className='child'>
@@ -8,7 +18,10 @@ class Child extends Component {
                 <input onChange={this.onInputChange} />
                 <br />
                 {/* another way to do the same */}
-                <input onChange={event => console.log(event.target.value)} />
+                <input onChange={event => this.setState({ inputValue: event.target.value})} />
+                {/* never use this.state=blah to assign state*/}
+                <br />
+                Value entered : {this.state.inputValue}
             </div>    
         );
     }
